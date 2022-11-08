@@ -4,21 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16ef6bd4-0542-4076-8d78-7ceb765fd460" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameLoopTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ship.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tank.png" afterDir="false" />
+    <list default="true" id="16ef6bd4-0542-4076-8d78-7ceb765fd460" name="Changes" comment="Separate Monitor , assign key detection , add status bar , resource loader for sprites">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameImageCollection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameKeyListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GamePanelStatusBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Monitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/ship.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameLoopTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameLoop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,7 +45,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Gebruiker/IdeaProjects/SimpleGame/untitled/src/main/resources",
+    "last_opened_file_path": "C:/Users/Gebruiker/IdeaProjects/SimpleGame/untitled/src/main/resources/img",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -46,6 +53,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gebruiker\IdeaProjects\SimpleGame\untitled\src\main\resources\img" />
       <recent name="C:\Users\Gebruiker\IdeaProjects\SimpleGame\untitled\src\main\resources" />
     </key>
   </component>
@@ -57,8 +65,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667913749275</updated>
-      <workItem from="1667913750573" duration="1763000" />
+      <workItem from="1667913750573" duration="11881000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit first loop with a airjet flyer in java swing">
+      <created>1667915571342</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667915571342</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -74,5 +90,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit first loop with a airjet flyer in java swing" />
+    <MESSAGE value="Separate Monitor , assign key detection , add status bar , resource loader for sprites" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separate Monitor , assign key detection , add status bar , resource loader for sprites" />
   </component>
 </project>
