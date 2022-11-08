@@ -7,7 +7,6 @@ public class Monitor {
     static public void showOnScreen(int screen, JFrame frame) {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice[] gd = ge.getScreenDevices();
-        //int width = 0, height = 0;
         if (screen > -1 && screen < gd.length) {
             int width = gd[screen].getDefaultConfiguration().getBounds().width;
             int height = gd[screen].getDefaultConfiguration().getBounds().height;

@@ -5,13 +5,11 @@ import java.awt.event.KeyListener;
 
 class GameKeyListener implements KeyListener {
     public void keyTyped(KeyEvent e) {
-        System.out.println("You pressed enters");
+
     }
 
     public void keyPressed(KeyEvent e) {
-        //if(e.getKeyCode() == KeyEvent.VK_ENTER){
-        System.out.println("You pressed enter");
-        //}
+        System.out.println("You pressed "+e.getKeyChar());
     }
 
     public void keyReleased(KeyEvent e) {

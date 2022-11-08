@@ -9,11 +9,16 @@ public class GameImageCollection {
     static private BufferedImage mainImage = null;
     static void Init(ClassLoader classLoader){
         try {
-            //InputStream path = this.getClass().getClassLoader().getResourceAsStream("img/ship.png");
-            //mainImage= ImageIO.read(path);
-            mainImage = ImageIO.read(Objects.requireNonNull(classLoader.getResourceAsStream("img/ship.png")));
-        } catch (NullPointerException | IOException exception) {
+            mainImage = getImageFromResource(classLoader,"img/ship.png");
+        } catch (NullPointerException exception) {
             System.out.println("GameImageCollection " + exception.getMessage());
+        }
+    }
+    private static BufferedImage getImageFromResource(ClassLoader classLoader,String resourceName) {
+        try {
+            return ImageIO.read(Objects.requireNonNull(classLoader.getResourceAsStream(resourceName)));
+        } catch (IOException ioException) {
+            return null;
         }
     }
 
