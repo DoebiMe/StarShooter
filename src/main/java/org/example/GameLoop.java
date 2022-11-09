@@ -59,12 +59,7 @@ public class GameLoop implements ActionListener {
 
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new GameLoop();
-            }
-        });
+        SwingUtilities.invokeLater(() -> new GameLoop());
     }
 
     @Override
@@ -94,12 +89,7 @@ public class GameLoop implements ActionListener {
 
     //Starts a new thread and runs the game loop in it.
     public void runGameLoop() {
-        Thread loop = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                gameLoop();
-            }
-        });
+        Thread loop = new Thread(() -> gameLoop());
         loop.start();
     }
 
@@ -131,15 +121,22 @@ public class GameLoop implements ActionListener {
             currentPressedKeys = GameKeyListener.getCurrentPressedKeys();
             if (currentPressedKeys.contains(KeyEnum.KEY_ENTER)) {
                 //System.out.println("SHOOT");
+                gamePanelPlayField.positionMainFigureToInitialPosition();
             }
 
             if (currentPressedKeys.contains(KeyEnum.KEY_LEFT)) {
-                gamePanelPlayField.setMainFigureX(gamePanelPlayField.getMainFigureX()-5);
+                gamePanelPlayField.setMainFigureX(gamePanelPlayField.getMainFigureX()-gamePanelPlayField.getMainFigureHorizontalVelocity());
             }
             if (currentPressedKeys.contains(KeyEnum.KEY_RIGHT)) {
-                gamePanelPlayField.setMainFigureX(gamePanelPlayField.getMainFigureX()+5);
+                gamePanelPlayField.setMainFigureX(gamePanelPlayField.getMainFigureX()+gamePanelPlayField.getMainFigureHorizontalVelocity());
             }
-
+            if (currentPressedKeys.contains(KeyEnum.KEY_UP)) {
+                gamePanelPlayField.setMainFigureY(gamePanelPlayField.getMainFigureY()-gamePanelPlayField.getMainFigureVerticalVelocity());
+            }
+            if (currentPressedKeys.contains(KeyEnum.KEY_DOWN)) {
+                gamePanelPlayField.setMainFigureY(gamePanelPlayField.getMainFigureY()+gamePanelPlayField.getMainFigureVerticalVelocity());
+            }
+            gamePanelPlayField.repositionMainFigureInsideAllowedZone();
 
             double now = System.nanoTime();
             int updateCount = 0;
@@ -166,8 +163,8 @@ public class GameLoop implements ActionListener {
                 }
 
                 //Render. To do so, we need to calculate interpolation for a smooth render.
-                float interpolation = Math.min(1.0f, (float) ((now - lastUpdateTime) / TIME_BETWEEN_UPDATES));
-                drawGame(interpolation);
+                //float interpolation = Math.min(1.0f, (float) ((now - lastUpdateTime) / TIME_BETWEEN_UPDATES));
+                drawGame(/*interpolation*/);
                 lastRenderTime = now;
 
                 //Update the frames we got.
@@ -188,7 +185,10 @@ public class GameLoop implements ActionListener {
                     //On my OS it does not unpuase the game if i take this away
                     try {
                         Thread.sleep(1);
-                    } catch (Exception e) {
+                    } catch (IllegalArgumentException illegalArgumentException) {
+                        System.out.println("IllegalArgumentException in GameLoop");
+                    } catch (InterruptedException interruptedException) {
+                        System.out.println("InterruptedException in GameLoop");
                     }
 
                     now = System.nanoTime();
@@ -202,8 +202,8 @@ public class GameLoop implements ActionListener {
         gamePanelPlayField.update();
     }
 
-    private void drawGame(float interpolation) {
-        gamePanelPlayField.setInterpolation(interpolation);
+    private void drawGame(/*float interpolation*/) {
+        //gamePanelPlayField.setInterpolation(interpolation);
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override

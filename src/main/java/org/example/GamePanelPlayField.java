@@ -7,7 +7,12 @@ class GamePanelPlayField extends JPanel {
 
 
     private int mainFigureX,mainFigureY;
-    float interpolation;
+    final private int initialMainFigureX,initialMainFigureY;
+    final private int mainFigureMinX,mainFigureMaxX;
+    final private int mainFigureMinY,mainFigureMaxY;
+    private int mainFigureHorizontalVelocity;
+    private int mainFigureVerticalVelocity;
+    //float interpolation;
     float ballX, ballY, lastBallX, lastBallY;
     int ballWidth, ballHeight;
     float ballXVel, ballYVel;
@@ -27,13 +32,38 @@ class GamePanelPlayField extends JPanel {
         ballYVel = (float) Math.random() * ballSpeed * 2 - ballSpeed;
         this.width = width;
         this.height = height;
-        mainFigureX = this.width / 2 - (GameImageCollection.getMainImage().getWidth()/2);
-        mainFigureY = this.height - (GameImageCollection.getMainImage().getHeight() *2);
+        initialMainFigureX = this.width / 2 - (GameImageCollection.getMainImage().getWidth()/2) ;
+        initialMainFigureY = this.height - (GameImageCollection.getMainImage().getHeight() *2);
+        positionMainFigureToInitialPosition();
+        mainFigureMinX = 10 - (GameImageCollection.getMainImage().getWidth()/2) ;
+        mainFigureMaxX = this.width - 10 - (GameImageCollection.getMainImage().getWidth()/2) ;
+        mainFigureMaxY = this.height - 50;
+        mainFigureMinY = this.height - 3 * GameImageCollection.getMainImage().getHeight();
+        setMainFigureHorizontalVelocity(5);
+        setMainFigureVerticalVelocity(5);
+
     }
 
-    public void setInterpolation(float interp) {
-        interpolation = interp;
+    public void positionMainFigureToInitialPosition(){
+        mainFigureX = initialMainFigureX;
+        mainFigureY = initialMainFigureY;
     }
+
+    public void repositionMainFigureInsideAllowedZone(){
+
+        mainFigureX = Math.max(mainFigureMinX,mainFigureX);
+        mainFigureX = Math.min(mainFigureMaxX,mainFigureX);
+        mainFigureY = Math.max(mainFigureMinY,mainFigureY);
+        mainFigureY = Math.min(mainFigureMaxY,mainFigureY);
+
+    }
+
+    /*
+    public void setInterpolation(float interp) {
+        // interpolation = interp;
+    }
+
+     */
 
     public void update() {
 
@@ -132,5 +162,21 @@ class GamePanelPlayField extends JPanel {
 
     public void setMainFigureY(int mainFigureY) {
         this.mainFigureY = mainFigureY;
+    }
+
+    public int getMainFigureHorizontalVelocity() {
+        return mainFigureHorizontalVelocity;
+    }
+
+    public void setMainFigureHorizontalVelocity(int mainFigureHorizontalVelocity) {
+        this.mainFigureHorizontalVelocity = mainFigureHorizontalVelocity;
+    }
+
+    public int getMainFigureVerticalVelocity() {
+        return mainFigureVerticalVelocity;
+    }
+
+    public void setMainFigureVerticalVelocity(int mainFigureVerticalVelocity) {
+        this.mainFigureVerticalVelocity = mainFigureVerticalVelocity;
     }
 }

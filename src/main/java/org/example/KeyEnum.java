@@ -19,7 +19,7 @@ public enum KeyEnum {
 
     public static KeyEnum getKeyEnumForKeyEvent(KeyEvent keyEvent) {
         for (KeyEnum keyEnum : KeyEnum.values()) {
-            if (keyEnum.value == keyEvent.getKeyCode() ) {
+            if (keyEnum.value == keyEvent.getKeyCode()) {
                 return keyEnum;
             }
         }

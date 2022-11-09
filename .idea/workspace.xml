@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16ef6bd4-0542-4076-8d78-7ceb765fd460" name="Changes" comment="Seperate KeyListener, split all up in smaller methods.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameLoop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/KeyEnum.java" afterDir="false" />
+    <list default="true" id="16ef6bd4-0542-4076-8d78-7ceb765fd460" name="Changes" comment="Airplain can move horizontal and vertical in its allowed zone with set up velocity">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameImageCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameImageCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameKeyListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameLoopTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameLoop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GamePanelStatusBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GamePanelStatusBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/KeyEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/KeyEnum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +82,8 @@
       <option name="presentableId" value="Default" />
       <updated>1667913749275</updated>
       <workItem from="1667913750573" duration="15024000" />
-      <workItem from="1667976871883" duration="8762000" />
+      <workItem from="1667976871883" duration="9290000" />
+      <workItem from="1667995865794" duration="2521000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit first loop with a airjet flyer in java swing">
       <created>1667915571342</created>
@@ -109,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667931139174</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Improved key detection, first movement of the airplaine with the arrow keys">
+      <created>1667989994136</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667989994136</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +134,8 @@
     <MESSAGE value="Initial commit first loop with a airjet flyer in java swing" />
     <MESSAGE value="Separate Monitor , assign key detection , add status bar , resource loader for sprites" />
     <MESSAGE value="Seperate KeyListener, split all up in smaller methods." />
-    <option name="LAST_COMMIT_MESSAGE" value="Seperate KeyListener, split all up in smaller methods." />
+    <MESSAGE value="Improved key detection, first movement of the airplaine with the arrow keys" />
+    <MESSAGE value="Airplain can move horizontal and vertical in its allowed zone with set up velocity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Airplain can move horizontal and vertical in its allowed zone with set up velocity" />
   </component>
 </project>
