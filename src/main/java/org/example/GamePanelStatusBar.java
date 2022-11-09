@@ -11,6 +11,8 @@ public class GamePanelStatusBar extends JPanel {
         fieldLives = new JLabel(Integer.toString(lives));
         add(labelLives);
         add(fieldLives);
+
+
     }
 
     public int getLives() {

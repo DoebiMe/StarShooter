@@ -5,6 +5,8 @@ import java.awt.*;
 
 class GamePanelPlayField extends JPanel {
 
+
+    private int mainFigureX,mainFigureY;
     float interpolation;
     float ballX, ballY, lastBallX, lastBallY;
     int ballWidth, ballHeight;
@@ -13,8 +15,6 @@ class GamePanelPlayField extends JPanel {
     int lastDrawX, lastDrawY;
 
     int width, height;
-
-    //GameImageCollection gameImageCollection = new GameImageCollection();
 
     public GamePanelPlayField(int width, int height) {
         super(true);
@@ -27,6 +27,8 @@ class GamePanelPlayField extends JPanel {
         ballYVel = (float) Math.random() * ballSpeed * 2 - ballSpeed;
         this.width = width;
         this.height = height;
+        mainFigureX = this.width / 2 - (GameImageCollection.getMainImage().getWidth()/2);
+        mainFigureY = this.height - (GameImageCollection.getMainImage().getHeight() *2);
     }
 
     public void setInterpolation(float interp) {
@@ -34,6 +36,10 @@ class GamePanelPlayField extends JPanel {
     }
 
     public void update() {
+
+
+
+
         lastBallX = ballX;
         lastBallY = ballY;
 
@@ -99,7 +105,7 @@ class GamePanelPlayField extends JPanel {
 
 
         try {
-            g.drawImage(GameImageCollection.getMainImage(),drawX,drawY,null);
+            g.drawImage(GameImageCollection.getMainImage(),mainFigureX,mainFigureY,null);
         } catch (Exception exception) {
             System.out.println("Error during drawImage mainImage");
         }
@@ -110,5 +116,21 @@ class GamePanelPlayField extends JPanel {
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(width, height);
+    }
+
+    public int getMainFigureX() {
+        return mainFigureX;
+    }
+
+    public void setMainFigureX(int mainFigureX) {
+        this.mainFigureX = mainFigureX;
+    }
+
+    public int getMainFigureY() {
+        return mainFigureY;
+    }
+
+    public void setMainFigureY(int mainFigureY) {
+        this.mainFigureY = mainFigureY;
     }
 }
