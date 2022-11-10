@@ -5,10 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16ef6bd4-0542-4076-8d78-7ceb765fd460" name="Changes" comment="Airplain can move horizontal and vertical in its allowed zone with set up velocity">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameAsteroids.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameSprite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameUFOs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/IdAndImg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/asteroid1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/asteroid2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/asteroid3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/asteroid4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/asteroid5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/img/ufo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sound/metal_gear_title screen.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sound/metal_gear_title screen.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameImageCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameImageCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameMainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/KeyEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/KeyEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GamePanelStatusBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GamePanelStatusBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ship.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tank.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +33,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -52,10 +67,13 @@
       <recent name="C:\Users\Gebruiker\IdeaProjects\SimpleGame\untitled\src\main\resources\img" />
       <recent name="C:\Users\Gebruiker\IdeaProjects\SimpleGame\untitled\src\main\resources" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gebruiker\IdeaProjects\SimpleGame\untitled\src\main\resources\sound" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration name="GameLoop" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.GameLoop" />
+    <configuration name="GameMainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.GameMainClass" />
       <module name="untitled" />
       <extension name="coverage">
         <pattern>
@@ -69,7 +87,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GameLoop" />
+        <item itemvalue="Application.GameMainClass" />
       </list>
     </recent_temporary>
   </component>
@@ -83,7 +101,8 @@
       <updated>1667913749275</updated>
       <workItem from="1667913750573" duration="15024000" />
       <workItem from="1667976871883" duration="9290000" />
-      <workItem from="1667995865794" duration="2521000" />
+      <workItem from="1667995865794" duration="3906000" />
+      <workItem from="1668004720786" duration="13266000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit first loop with a airjet flyer in java swing">
       <created>1667915571342</created>
@@ -113,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667989994136</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Airplain can move horizontal and vertical in its allowed zone with set up velocity">
+      <created>1667998823387</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667998823387</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -21,6 +21,6 @@ public class GamePanelStatusBar extends JPanel {
 
     public void setLives(int lives) {
         this.lives = lives;
-        fieldLives.setText(Integer.toString(lives));
+        fieldLives.setText( String.format("%03d", lives) );
     }
 }

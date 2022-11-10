@@ -125,7 +125,9 @@ class GamePanelPlayField extends JPanel {
         int drawX = (int) ((ballX - lastBallX) + lastBallX - ballWidth / 2);
         int drawY = (int) ((ballY - lastBallY) + lastBallY - ballHeight / 2);
 
-        g2d.fillOval(drawX, drawY, ballWidth, ballHeight);
+
+        //g2d.fillOval(drawX, drawY, ballWidth, ballHeight);
+
 
         lastDrawX = drawX;
         lastDrawY = drawY;
@@ -139,7 +141,19 @@ class GamePanelPlayField extends JPanel {
         } catch (Exception exception) {
             System.out.println("Error during drawImage mainImage");
         }
+        try {
+            GameAsteroids.doMovementOnAllAstroids(this);
+            GameAsteroids. drawAllAsteroids(g);
+        } catch (Exception exception) {
+            System.out.println("Error during drawAllAstroids");
+        }
 
+        try {
+            GameUFOs.doMovementOnAllUFOs((int)ballX,(int)ballY);
+            GameUFOs.drawAllUFOs(g);
+        } catch (Exception exception) {
+            System.out.println("Error during drawAllUFO");
+        }
 
     }
 

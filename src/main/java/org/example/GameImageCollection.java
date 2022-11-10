@@ -6,17 +6,68 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 
 public class GameImageCollection {
     static private BufferedImage mainImage = null;
+
+    static private LinkedHashSet<IdAndImg> asteroids = null;
+
     static void Init(ClassLoader classLoader){
+        uploadMainImage(classLoader);
+        uploadAsteroidImages(classLoader);
+        uploadUFOsImages(classLoader);
+    }
+
+    private static void uploadMainImage(ClassLoader classLoader) {
         try {
             mainImage = scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/ship.png")),0.25);
         } catch (NullPointerException exception) {
-            System.out.println("GameImageCollection " + exception.getMessage());
+            System.out.println("GameImageCollection uploadMainImage " + exception.getMessage());
         }
     }
+
+
+    private static void uploadAsteroidImages(ClassLoader classLoader) {
+        asteroids = new LinkedHashSet<>();
+        try {
+            for (int index = 1;index<=5;index++) {
+                IdAndImg idAndImg = new IdAndImg(scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/asteroid" + Integer.toString(index) + ".png")), 0.05), index);
+                System.out.println("Asteroid upload ok "+index);
+                GameAsteroids.add(idAndImg, 50, 100);
+            }
+
+        } catch (NullPointerException exception) {
+            System.out.println("GameImageCollection upload Astroid1" + exception.getMessage());
+        }
+    }
+    private static void uploadUFOsImages(ClassLoader classLoader) {
+        try {
+            for (int index = 1;index<=1;index++) {
+                IdAndImg idAndImg = new IdAndImg(scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/UFO" + Integer.toString(index) + ".png")), 0.25), index);
+                System.out.println("UFO upload ok "+index);
+                GameUFOs.add(idAndImg, 50, 100);
+            }
+
+        } catch (NullPointerException exception) {
+            System.out.println("GameImageCollection upload Astroid1" + exception.getMessage());
+        }
+    }
+
+    public static IdAndImg getIdAndImgWithId(int id) {
+        for (IdAndImg idAndImg : asteroids) {
+            if (idAndImg.getId() == id) {
+                return idAndImg;
+            }
+        }
+        return null;
+    }
+
+
+
+
+
     private static BufferedImage getImageFromResource(ClassLoader classLoader,String resourceName) {
         try {
             return ImageIO.read(Objects.requireNonNull(classLoader.getResourceAsStream(resourceName)));
