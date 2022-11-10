@@ -18,8 +18,8 @@ public class GameMainClass implements ActionListener {
     private LinkedHashSet<KeyEnum> currentPressedKeys;
 
 
-    private boolean running = false;
-    private boolean paused = false;
+    private static boolean running = false;
+    private static boolean paused = false;
 
 
     public GameMainClass() {
@@ -35,7 +35,12 @@ public class GameMainClass implements ActionListener {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new GameMainClass());
+        SwingUtilities.invokeLater(() -> {
+            new GameMainClass();
+        });
+        Thread loopGameMusic = new Thread(() -> gameMusic());
+        loopGameMusic.start();
+        loopGameMusic.setName("loopGameMusic");
     }
 
     private void callConstructorFromAllPanels() {
@@ -90,42 +95,62 @@ public class GameMainClass implements ActionListener {
         }
     }
 
+
     //Starts a new thread and runs the game loop in it.
     public void runGameLoop() {
+        System.out.println("Before first thread graphics " + Thread.activeCount());
         Thread loopGameLogicAndGraphics = new Thread(() -> gameLoop());
         loopGameLogicAndGraphics.start();
-        Thread loopGameMusic = new Thread(() -> {
-            gameMusic();
 
-        });
-        loopGameMusic.start();
+        System.out.println("Before second thread music" + Thread.activeCount());
+
+
+
+
+
+        System.out.println("After both threads " + Thread.activeCount());
+
     }
 
-    private void gameMusic() {
-        try {
-            InputStream is = getClass().getResourceAsStream("/sound/metal_gear_title screen.wav");
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(is);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            while (true) {
-                clip.start();
-                clip.loop(clip.LOOP_CONTINUOUSLY);
+    private static void gameMusic() {
+        System.out.println("starting in gameMusic()");
 
+            try {
+                InputStream is = GameMainClass.class.getResourceAsStream("/sound/metal_gear_title screen.wav");
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(is);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                while (true) {
+                    while (running  & !paused) {
+                        if (!clip.isRunning()) {
+                            clip.setFramePosition(0);
+                            clip.start();
+                        }
+                    }
+                    if (clip.isRunning()) {
+                        clip.stop();
+                    }
+                }
+
+            } catch (LineUnavailableException lineUnavailableException) {
+                System.out.println("In gameMusic LineUnavailableException");
+            } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                System.out.println("In gameMusic UnsupportedAudioFileException");
+            } catch (IOException ioException) {
+                System.out.println("In gameMusic IOException");
+            } catch (NullPointerException nullPointerException) {
+                System.out.println("In gameMusic NullPointerException");
+            } finally {
+                System.out.println("Why we stop gameLoopMusic ?");
             }
-        } catch (LineUnavailableException lineUnavailableException) {
 
-        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-
-        } catch (IOException ioException) {
-
-        } catch (NullPointerException nullPointerException) {
-
-        }
 
     }
+
 
     //Only run this in another Thread!
     private void gameLoop() {
+        System.out.println("Starting in gameLoop()");
         //This value would probably be stored elsewhere.
         final double GAME_HERTZ = 30.0;
         //Calculate how many ns each frame should take for our target game hertz.
@@ -224,6 +249,7 @@ public class GameMainClass implements ActionListener {
 
             }
         }
+        System.out.println("Ending GameLoop()");
     }
 
     private void updateGame() {
