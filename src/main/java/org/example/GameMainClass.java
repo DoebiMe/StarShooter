@@ -35,12 +35,41 @@ public class GameMainClass implements ActionListener {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new GameMainClass();
-        });
+        SwingUtilities.invokeLater(() ->  new GameMainClass());
+        startGameMusicThread();
+    }
+
+    private static void startGameMusicThread() {
         Thread loopGameMusic = new Thread(() -> gameMusic());
         loopGameMusic.start();
         loopGameMusic.setName("loopGameMusic");
+    }
+    private static void gameMusic() {
+        try {
+            InputStream is = GameMainClass.class.getResourceAsStream("/sound/metal_gear_title screen.wav");
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(is);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            while (true) {
+                while (running  & !paused) {
+                    if (!clip.isRunning()) {
+                        clip.setFramePosition(0);
+                        clip.start();
+                    }
+                }
+                if (clip.isRunning()) {
+                    clip.stop();
+                }
+            }
+        } catch (LineUnavailableException lineUnavailableException) {
+            System.out.println("In gameMusic LineUnavailableException");
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            System.out.println("In gameMusic UnsupportedAudioFileException");
+        } catch (IOException ioException) {
+            System.out.println("In gameMusic IOException");
+        } catch (NullPointerException nullPointerException) {
+            System.out.println("In gameMusic NullPointerException");
+        }
     }
 
     private void callConstructorFromAllPanels() {
@@ -98,54 +127,11 @@ public class GameMainClass implements ActionListener {
 
     //Starts a new thread and runs the game loop in it.
     public void runGameLoop() {
-        System.out.println("Before first thread graphics " + Thread.activeCount());
         Thread loopGameLogicAndGraphics = new Thread(() -> gameLoop());
         loopGameLogicAndGraphics.start();
-
-        System.out.println("Before second thread music" + Thread.activeCount());
-
-
-
-
-
-        System.out.println("After both threads " + Thread.activeCount());
-
     }
 
-    private static void gameMusic() {
-        System.out.println("starting in gameMusic()");
 
-            try {
-                InputStream is = GameMainClass.class.getResourceAsStream("/sound/metal_gear_title screen.wav");
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(is);
-                Clip clip = AudioSystem.getClip();
-                clip.open(audioInputStream);
-                while (true) {
-                    while (running  & !paused) {
-                        if (!clip.isRunning()) {
-                            clip.setFramePosition(0);
-                            clip.start();
-                        }
-                    }
-                    if (clip.isRunning()) {
-                        clip.stop();
-                    }
-                }
-
-            } catch (LineUnavailableException lineUnavailableException) {
-                System.out.println("In gameMusic LineUnavailableException");
-            } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-                System.out.println("In gameMusic UnsupportedAudioFileException");
-            } catch (IOException ioException) {
-                System.out.println("In gameMusic IOException");
-            } catch (NullPointerException nullPointerException) {
-                System.out.println("In gameMusic NullPointerException");
-            } finally {
-                System.out.println("Why we stop gameLoopMusic ?");
-            }
-
-
-    }
 
 
     //Only run this in another Thread!
@@ -257,7 +243,6 @@ public class GameMainClass implements ActionListener {
     }
 
     private void drawGame(/*float interpolation*/) {
-        //gamePanelPlayField.setInterpolation(interpolation);
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override

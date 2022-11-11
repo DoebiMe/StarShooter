@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16ef6bd4-0542-4076-8d78-7ceb765fd460" name="Changes" comment="Added moving astroids, ufo's ands sound.">
+    <list default="true" id="16ef6bd4-0542-4076-8d78-7ceb765fd460" name="Changes" comment="Improved threads dealing with sound">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameAsteroids.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameAsteroids.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameImageCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameImageCollection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameMainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameMainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameUFOs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameUFOs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/IdAndImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/IdAndImg.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +92,9 @@
       <workItem from="1667976871883" duration="9290000" />
       <workItem from="1667995865794" duration="3906000" />
       <workItem from="1668004720786" duration="13612000" />
-      <workItem from="1668082349593" duration="7268000" />
+      <workItem from="1668082349593" duration="7923000" />
+      <workItem from="1668091963770" duration="2481000" />
+      <workItem from="1668155960371" duration="7349000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit first loop with a airjet flyer in java swing">
       <created>1667915571342</created>
@@ -130,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668074144808</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Improved threads dealing with sound">
+      <created>1668089839002</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668089839002</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +169,7 @@
     <MESSAGE value="Improved key detection, first movement of the airplaine with the arrow keys" />
     <MESSAGE value="Airplain can move horizontal and vertical in its allowed zone with set up velocity" />
     <MESSAGE value="Added moving astroids, ufo's ands sound." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added moving astroids, ufo's ands sound." />
+    <MESSAGE value="Improved threads dealing with sound" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved threads dealing with sound" />
   </component>
 </project>

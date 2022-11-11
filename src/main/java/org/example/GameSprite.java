@@ -4,24 +4,34 @@ import java.util.Random;
 
 public class GameSprite {
     private IdAndImg idAndImg;
-    private int xPos;
-    private int yPos;
+    private double xPos;
+    private double yPos;
 
-    private int velocity;
+    private double velocity;
     private boolean active;
+    private int indexInBufferedImages;
 
-    public GameSprite(IdAndImg idAndImg, int xPos, int yPos) {
+    public GameSprite(IdAndImg idAndImg, double xPos, double yPos) {
         this.idAndImg = idAndImg;
         this.xPos = xPos;
         this.yPos = yPos;
         setRandomVelocity();
+        setRandomIndexInBufferedImages();
+    }
+
+    public void setRandomIndexInBufferedImages() {
+        Random rn = new Random();
+       // indexInBufferedImages = getIdAndImg().singleItemInBufferedImages()
+       //         ? 0
+       //         : rn.nextInt(idAndImg.getBufferedImageSizeZeroBased()   ) +1;
+        indexInBufferedImages =rn.nextInt(idAndImg.getBufferedImageSizeZeroBased()   ) +1;
     }
 
     public  void setRandomVelocity() {
         Random rn = new Random();
-        int oldVelocity = velocity;
+        double oldVelocity = velocity;
         while (oldVelocity==velocity) {
-            velocity = rn.nextInt(10) + 1;
+            velocity = rn.nextDouble(10) + 1;
         }
     }
 
@@ -33,19 +43,19 @@ public class GameSprite {
         this.idAndImg = idAndImg;
     }
 
-    public int getxPos() {
+    public double getxPos() {
         return xPos;
     }
 
-    public void setxPos(int xPos) {
+    public void setxPos(double xPos) {
         this.xPos = xPos;
     }
 
-    public int getyPos() {
+    public double getyPos() {
         return yPos;
     }
 
-    public void setyPos(int yPos) {
+    public void setyPos(double yPos) {
         this.yPos = yPos;
     }
 
@@ -57,7 +67,11 @@ public class GameSprite {
         this.active = active;
     }
 
-    public int getVelocity() {
+    public double getVelocity() {
         return velocity;
+    }
+
+    public int getIndexInBufferedImages() {
+        return indexInBufferedImages;
     }
 }

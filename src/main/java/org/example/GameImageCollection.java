@@ -33,7 +33,14 @@ public class GameImageCollection {
         asteroids = new LinkedHashSet<>();
         try {
             for (int index = 1;index<=5;index++) {
-                IdAndImg idAndImg = new IdAndImg(scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/asteroid" + Integer.toString(index) + ".png")), 0.05), index);
+                BufferedImage[] bufferedImages = new BufferedImage[IdAndImg.MAX_NR_IMAGES_BUFFER_SIZE];
+                bufferedImages[0] = getImageFromResource(classLoader, "img/asteroid" + Integer.toString(index) + ".png");
+                bufferedImages[1] = scale(Objects.requireNonNull(bufferedImages[0]),0.05);
+                bufferedImages[2] = scale(Objects.requireNonNull(bufferedImages[0]),0.10);
+                bufferedImages[3] = scale(Objects.requireNonNull(bufferedImages[0]),0.20);
+                bufferedImages[4] = scale(Objects.requireNonNull(bufferedImages[0]),0.50);
+
+                IdAndImg idAndImg = new IdAndImg( bufferedImages, index);
                 System.out.println("Asteroid upload ok "+index);
                 GameAsteroids.add(idAndImg, 50, 100);
             }
@@ -45,7 +52,9 @@ public class GameImageCollection {
     private static void uploadUFOsImages(ClassLoader classLoader) {
         try {
             for (int index = 1;index<=1;index++) {
-                IdAndImg idAndImg = new IdAndImg(scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/UFO" + Integer.toString(index) + ".png")), 0.25), index);
+                BufferedImage[] bufferedImages = new BufferedImage[IdAndImg.MIN_NR_IMAGES_BUFFER_SIZE];
+                bufferedImages[0] = scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/UFO" + Integer.toString(index) + ".png")), 0.25);
+                IdAndImg idAndImg = new IdAndImg(bufferedImages, index);
                 System.out.println("UFO upload ok "+index);
                 GameUFOs.add(idAndImg, 50, 100);
             }
