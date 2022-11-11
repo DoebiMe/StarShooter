@@ -57,18 +57,7 @@ class GamePanelPlayField extends JPanel {
         mainFigureY = Math.min(mainFigureMaxY,mainFigureY);
 
     }
-
-    /*
-    public void setInterpolation(float interp) {
-        // interpolation = interp;
-    }
-
-     */
-
     public void update() {
-
-
-
 
         lastBallX = ballX;
         lastBallY = ballY;
@@ -95,32 +84,12 @@ class GamePanelPlayField extends JPanel {
         }
     }
 
-    private final static RenderingHints textRenderHints = new RenderingHints(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-    private final static RenderingHints imageRenderHints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    private final static RenderingHints colorRenderHints = new RenderingHints(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-    private final static RenderingHints interpolationRenderHints = new RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-    private final static RenderingHints renderHints = new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-
-    public void applyRenderHints(Graphics2D g2d) {
-        g2d.setRenderingHints(textRenderHints);
-        g2d.setRenderingHints(imageRenderHints);
-        g2d.setRenderingHints(colorRenderHints);
-        g2d.setRenderingHints(interpolationRenderHints);
-        g2d.setRenderingHints(renderHints);
-    }
-
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D) g;
-
-        //applys effects like anti alising for images and tetx, as well as sets the renderinf value to quality etc
-        applyRenderHints(g2d);
-
-
         g2d.setColor(Color.RED);
-
 
         int drawX = (int) ((ballX - lastBallX) + lastBallX - ballWidth / 2);
         int drawY = (int) ((ballY - lastBallY) + lastBallY - ballHeight / 2);
@@ -136,9 +105,9 @@ class GamePanelPlayField extends JPanel {
 
         try {
             GameAsteroids.doMovementOnAllAsteroids(this);
-            GameAsteroids. drawAllAsteroids(g);
+            GameAsteroids.drawAllAsteroids(g);
         } catch (Exception exception) {
-            System.out.println("Error during drawAllAstroids " + exception);
+            System.out.println("Error during drawAllAsteroids " + exception.getMessage());
         }
 
         try {
@@ -178,7 +147,6 @@ class GamePanelPlayField extends JPanel {
     public void setMainFigureHorizontalVelocity(int mainFigureHorizontalVelocity) {
         this.mainFigureHorizontalVelocity = mainFigureHorizontalVelocity;
     }
-
     public int getMainFigureVerticalVelocity() {
         return mainFigureVerticalVelocity;
     }

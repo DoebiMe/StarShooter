@@ -6,14 +6,10 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.LinkedHashSet;
 import java.util.Objects;
 
 public class GameImageCollection {
     static private BufferedImage mainImage = null;
-
-    static private LinkedHashSet<IdAndImg> asteroids = null;
-
     static void Init(ClassLoader classLoader){
         uploadMainImage(classLoader);
         uploadAsteroidImages(classLoader);
@@ -30,52 +26,38 @@ public class GameImageCollection {
 
 
     private static void uploadAsteroidImages(ClassLoader classLoader) {
-        asteroids = new LinkedHashSet<>();
         try {
             for (int index = 1;index<=5;index++) {
-                BufferedImage[] bufferedImages = new BufferedImage[IdAndImg.MAX_NR_IMAGES_BUFFER_SIZE];
-                bufferedImages[0] = getImageFromResource(classLoader, "img/asteroid" + Integer.toString(index) + ".png");
-                bufferedImages[1] = scale(Objects.requireNonNull(bufferedImages[0]),0.05);
-                bufferedImages[2] = scale(Objects.requireNonNull(bufferedImages[0]),0.10);
-                bufferedImages[3] = scale(Objects.requireNonNull(bufferedImages[0]),0.20);
-                bufferedImages[4] = scale(Objects.requireNonNull(bufferedImages[0]),0.50);
+                BufferedImage[] bufferedImagesForNewAsteroid = new BufferedImage[IdAndImg.MAX_NR_IMAGES_BUFFER_SIZE];
+                BufferedImage originalBufferedImage = getImageFromResource(classLoader, "img/asteroid" + index + "-400.png");
+                for (int scaleSize=0;scaleSize < IdAndImg.MAX_NR_IMAGES_BUFFER_SIZE; scaleSize++) {
+                    bufferedImagesForNewAsteroid[scaleSize] =
+                            scale(Objects.requireNonNull(originalBufferedImage), 0.10 + (scaleSize*0.05));
+                }
 
-                IdAndImg idAndImg = new IdAndImg( bufferedImages, index);
+                IdAndImg idAndImg = new IdAndImg( bufferedImagesForNewAsteroid, index);
                 System.out.println("Asteroid upload ok "+index);
                 GameAsteroids.add(idAndImg, 50, 100);
             }
 
         } catch (NullPointerException exception) {
-            System.out.println("GameImageCollection upload Astroid1" + exception.getMessage());
+            System.out.println("GameImageCollection upload Asteroid1" + exception.getMessage());
         }
     }
     private static void uploadUFOsImages(ClassLoader classLoader) {
         try {
             for (int index = 1;index<=1;index++) {
                 BufferedImage[] bufferedImages = new BufferedImage[IdAndImg.MIN_NR_IMAGES_BUFFER_SIZE];
-                bufferedImages[0] = scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/UFO" + Integer.toString(index) + ".png")), 0.25);
+                bufferedImages[0] = scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/UFO" + index + ".png")), 0.25);
                 IdAndImg idAndImg = new IdAndImg(bufferedImages, index);
                 System.out.println("UFO upload ok "+index);
                 GameUFOs.add(idAndImg, 50, 100);
             }
 
         } catch (NullPointerException exception) {
-            System.out.println("GameImageCollection upload Astroid1" + exception.getMessage());
+            System.out.println("GameImageCollection upload UFO" + exception.getMessage());
         }
     }
-
-    public static IdAndImg getIdAndImgWithId(int id) {
-        for (IdAndImg idAndImg : asteroids) {
-            if (idAndImg.getId() == id) {
-                return idAndImg;
-            }
-        }
-        return null;
-    }
-
-
-
-
 
     private static BufferedImage getImageFromResource(ClassLoader classLoader,String resourceName) {
         try {
@@ -85,26 +67,24 @@ public class GameImageCollection {
         }
     }
 
-    private static BufferedImage scale(BufferedImage before, double scale) {
-        int w = before.getWidth();
-        int h = before.getHeight();
-        // Create a new image of the proper size
-        int w2 = (int) (w * scale);
-        int h2 = (int) (h * scale);
-        BufferedImage after = new BufferedImage(w2, h2, BufferedImage.TYPE_INT_ARGB);
-        AffineTransform scaleInstance = AffineTransform.getScaleInstance(scale, scale);
+    private static BufferedImage scale(BufferedImage originalBufferedImage, double scaleFactor) {
+        BufferedImage resultScaledBufferImage = new BufferedImage(
+                (int) (originalBufferedImage.getWidth() * scaleFactor),
+                (int) (originalBufferedImage.getHeight() * scaleFactor), BufferedImage.TYPE_INT_ARGB);
+        AffineTransform scaleInstance = AffineTransform.getScaleInstance(scaleFactor, scaleFactor);
         AffineTransformOp scaleOp
                 = new AffineTransformOp(scaleInstance, AffineTransformOp.TYPE_BILINEAR);
 
-        Graphics2D g2 = (Graphics2D) after.getGraphics();
+        Graphics2D g2 = (Graphics2D) resultScaledBufferImage.getGraphics();
         // Here, you may draw anything you want into the new image, but we're
         // drawing a scaled version of the original image.
-        g2.drawImage(before, scaleOp, 0, 0);
+        g2.drawImage(originalBufferedImage, scaleOp, 0, 0);
+        g2.setFont(new Font("TimesRoman", Font.BOLD, 20));
+        g2.setColor(Color.RED);
+        g2.drawString(Double.toString(scaleFactor),10,15);
         g2.dispose();
-        return after;
+        return resultScaledBufferImage;
     }
-
-
     public static BufferedImage getMainImage() {
         return mainImage;
     }

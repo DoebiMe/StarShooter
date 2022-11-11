@@ -6,7 +6,7 @@ import java.util.LinkedHashSet;
 
 class GameKeyListener implements KeyListener {
 
-    private static LinkedHashSet<KeyEnum> currentUsedKeys = new LinkedHashSet<>();
+    final private static LinkedHashSet<KeyEnum> currentUsedKeys = new LinkedHashSet<>();
     public void keyTyped(KeyEvent e) {
 
     }
@@ -15,7 +15,6 @@ class GameKeyListener implements KeyListener {
         if (!keyEnum.equals(KeyEnum.KEY_NONE)) {
             currentUsedKeys.add(keyEnum);
         }
-
     }
     public void keyReleased(KeyEvent keyEvent) {
         KeyEnum keyEnum = KeyEnum.getKeyEnumForKeyEvent(keyEvent);
@@ -24,12 +23,6 @@ class GameKeyListener implements KeyListener {
         }
     }
 
-    private void bulkPrintCurrentUsedKeys() {
-        for (KeyEnum keyEnum : currentUsedKeys) {
-            System.out.print(keyEnum + " ");
-        }
-        System.out.println();
-    }
 
     public static LinkedHashSet<KeyEnum> getCurrentPressedKeys() {
         return currentUsedKeys;

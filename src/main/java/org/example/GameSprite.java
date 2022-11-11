@@ -3,7 +3,7 @@ package org.example;
 import java.util.Random;
 
 public class GameSprite {
-    private IdAndImg idAndImg;
+    final private IdAndImg idAndImg;
     private double xPos;
     private double yPos;
 
@@ -20,11 +20,8 @@ public class GameSprite {
     }
 
     public void setRandomIndexInBufferedImages() {
-        Random rn = new Random();
-       // indexInBufferedImages = getIdAndImg().singleItemInBufferedImages()
-       //         ? 0
-       //         : rn.nextInt(idAndImg.getBufferedImageSizeZeroBased()   ) +1;
-        indexInBufferedImages =rn.nextInt(idAndImg.getBufferedImageSizeZeroBased()   ) +1;
+        Random random = new Random();
+        indexInBufferedImages = random.nextInt(idAndImg.getBufferedImageSizeZeroBased()   ) ;
     }
 
     public  void setRandomVelocity() {
@@ -39,9 +36,7 @@ public class GameSprite {
         return idAndImg;
     }
 
-    public void setIdAndImg(IdAndImg idAndImg) {
-        this.idAndImg = idAndImg;
-    }
+
 
     public double getxPos() {
         return xPos;

@@ -18,11 +18,15 @@ public class GameAsteroids {
 
         for (GameSprite gameSprite : gameSpriteArrayList) {
             gameSprite.setyPos(gameSprite.getyPos() + gameSprite.getVelocity());
-            if (gameSprite.getyPos() > gamePlayField.getHeight()+ 100) {
+            if (gameSprite.getyPos() > gamePlayField.getHeight() + 100) {
                 double randomVerticalPosToStop = rn.nextDouble(1000) + gameSprite.getVelocity();
                 if (randomVerticalPosToStop > 800) {
-                    gameSprite.setyPos(- Math.max(rn.nextDouble(800),gameSprite.getIdAndImg().getBufferedImage(gameSprite.getIndexInBufferedImages()).getHeight() )); // hieronder rekeneing houden met de scaling
-                    int randomHorizontalPosToStart = rn.nextInt(gamePlayField.getWidth() - gameSprite.getIdAndImg().getBufferedImage(gameSprite.getIndexInBufferedImages()).getWidth()/2) + 1;
+                    gameSprite.setRandomIndexInBufferedImages();
+                    gameSprite.setyPos(-Math.max(rn.nextDouble(800), gameSprite.getIdAndImg().getBufferedImage(gameSprite.getIndexInBufferedImages()).getHeight())); // hieronder rekeneing houden met de scaling
+
+                    int helperRandomHorizontalStart = gamePlayField.getWidth() -
+                            (gameSprite.getIdAndImg().getWidthBufferedImage(gameSprite.getIndexInBufferedImages()) / 2) + 1;
+                    int randomHorizontalPosToStart = rn.nextInt(Math.max(1, helperRandomHorizontalStart));
                     gameSprite.setxPos(randomHorizontalPosToStart);
                     gameSprite.setRandomVelocity();
                 }
@@ -32,7 +36,7 @@ public class GameAsteroids {
 
     public static void drawAllAsteroids(Graphics g) {
         for (GameSprite gameSprite : gameSpriteArrayList) { // hier moeten we een scaling toepassen in de index buffered image
-            g.drawImage(gameSprite.getIdAndImg().getBufferedImage(gameSprite.getIndexInBufferedImages()), (int)gameSprite.getxPos(), (int)gameSprite.getyPos(), null);
+            g.drawImage(gameSprite.getIdAndImg().getBufferedImage(gameSprite.getIndexInBufferedImages()), (int) gameSprite.getxPos(), (int) gameSprite.getyPos(), null);
         }
     }
 
