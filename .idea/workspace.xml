@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16ef6bd4-0542-4076-8d78-7ceb765fd460" name="Changes" comment="Further improvement on scale and randomness">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameRocketBombs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameAsteroids.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameAsteroids.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameImageCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameImageCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameKeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameKeyListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameMainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameMainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameSprite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/IdAndImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/IdAndImg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/img/asteroid1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/img/asteroid2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/img/asteroid3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/img/asteroid4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/img/asteroid5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/img/ship.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/img/ship.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +100,10 @@
       <workItem from="1668082349593" duration="7923000" />
       <workItem from="1668091963770" duration="2481000" />
       <workItem from="1668155960371" duration="7379000" />
-      <workItem from="1668169160027" duration="5427000" />
+      <workItem from="1668169160027" duration="5812000" />
+      <workItem from="1668175289998" duration="203000" />
+      <workItem from="1668181619779" duration="2375000" />
+      <workItem from="1668248915029" duration="3419000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit first loop with a airjet flyer in java swing">
       <created>1667915571342</created>
@@ -152,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668167927214</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Further improvement on scale and randomness">
+      <created>1668174889521</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668174889521</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

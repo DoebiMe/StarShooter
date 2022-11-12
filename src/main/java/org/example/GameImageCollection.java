@@ -10,15 +10,35 @@ import java.util.Objects;
 
 public class GameImageCollection {
     static private BufferedImage mainImage = null;
-    static void Init(ClassLoader classLoader){
+
+    static void Init(ClassLoader classLoader) {
         uploadMainImage(classLoader);
         uploadAsteroidImages(classLoader);
         uploadUFOsImages(classLoader);
+        uploadMainRocketBombs(classLoader);
+    }
+
+    private static void uploadMainRocketBombs(ClassLoader classLoader) {
+        try {
+
+            BufferedImage[] rocketBombs = new BufferedImage[IdAndImg.MIN_NR_IMAGES_BUFFER_SIZE];
+            BufferedImage originalBufferedImage = getImageFromResource(classLoader, "img/rocketbomb1.png");
+
+            rocketBombs[0] =
+                    scale(Objects.requireNonNull(originalBufferedImage), 0.5);
+            IdAndImg idAndImg = new IdAndImg(rocketBombs, 1);
+            GameRocketBombs.init(idAndImg);
+            System.out.println("rocketbomb upload ok ");
+            GameRocketBombs.init(idAndImg);
+
+        } catch (NullPointerException exception) {
+            System.out.println("GameImageCollection upload rocket bombs" + exception.getMessage());
+        }
     }
 
     private static void uploadMainImage(ClassLoader classLoader) {
         try {
-            mainImage = scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/ship.png")),0.25);
+            mainImage = scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/ship.png")), 0.25);
         } catch (NullPointerException exception) {
             System.out.println("GameImageCollection uploadMainImage " + exception.getMessage());
         }
@@ -27,16 +47,16 @@ public class GameImageCollection {
 
     private static void uploadAsteroidImages(ClassLoader classLoader) {
         try {
-            for (int index = 1;index<=5;index++) {
+            for (int index = 1; index <= 10; index++) {
                 BufferedImage[] bufferedImagesForNewAsteroid = new BufferedImage[IdAndImg.MAX_NR_IMAGES_BUFFER_SIZE];
                 BufferedImage originalBufferedImage = getImageFromResource(classLoader, "img/asteroid" + index + "-400.png");
-                for (int scaleSize=0;scaleSize < IdAndImg.MAX_NR_IMAGES_BUFFER_SIZE; scaleSize++) {
+                for (int scaleSize = 0; scaleSize < IdAndImg.MAX_NR_IMAGES_BUFFER_SIZE; scaleSize++) {
                     bufferedImagesForNewAsteroid[scaleSize] =
-                            scale(Objects.requireNonNull(originalBufferedImage), 0.10 + (scaleSize*0.05));
+                            scale(Objects.requireNonNull(originalBufferedImage), 0.10 + (scaleSize * 0.05));
                 }
 
-                IdAndImg idAndImg = new IdAndImg( bufferedImagesForNewAsteroid, index);
-                System.out.println("Asteroid upload ok "+index);
+                IdAndImg idAndImg = new IdAndImg(bufferedImagesForNewAsteroid, index);
+                System.out.println("Asteroid upload ok " + index);
                 GameAsteroids.add(idAndImg, 50, 100);
             }
 
@@ -44,13 +64,14 @@ public class GameImageCollection {
             System.out.println("GameImageCollection upload Asteroid1" + exception.getMessage());
         }
     }
+
     private static void uploadUFOsImages(ClassLoader classLoader) {
         try {
-            for (int index = 1;index<=1;index++) {
+            for (int index = 1; index <= 1; index++) {
                 BufferedImage[] bufferedImages = new BufferedImage[IdAndImg.MIN_NR_IMAGES_BUFFER_SIZE];
                 bufferedImages[0] = scale(Objects.requireNonNull(getImageFromResource(classLoader, "img/UFO" + index + ".png")), 0.25);
                 IdAndImg idAndImg = new IdAndImg(bufferedImages, index);
-                System.out.println("UFO upload ok "+index);
+                System.out.println("UFO upload ok " + index);
                 GameUFOs.add(idAndImg, 50, 100);
             }
 
@@ -59,7 +80,7 @@ public class GameImageCollection {
         }
     }
 
-    private static BufferedImage getImageFromResource(ClassLoader classLoader,String resourceName) {
+    private static BufferedImage getImageFromResource(ClassLoader classLoader, String resourceName) {
         try {
             return ImageIO.read(Objects.requireNonNull(classLoader.getResourceAsStream(resourceName)));
         } catch (IOException ioException) {
@@ -81,10 +102,11 @@ public class GameImageCollection {
         g2.drawImage(originalBufferedImage, scaleOp, 0, 0);
         g2.setFont(new Font("TimesRoman", Font.BOLD, 20));
         g2.setColor(Color.RED);
-        g2.drawString(Double.toString(scaleFactor),10,15);
+        g2.drawString(Double.toString(scaleFactor), 10, 15);
         g2.dispose();
         return resultScaledBufferImage;
     }
+
     public static BufferedImage getMainImage() {
         return mainImage;
     }

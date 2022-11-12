@@ -40,5 +40,9 @@ public class IdAndImg {
         return bufferedImages[index].getWidth();
     }
 
+    public int getHeightBufferedImage(int index) {
+        return bufferedImages[index].getHeight();
+    }
+
 }
 

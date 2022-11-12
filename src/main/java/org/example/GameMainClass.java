@@ -76,8 +76,6 @@ public class GameMainClass implements ActionListener {
         gamePanelStatusBar = new GamePanelStatusBar();
         gamePanelPlayField = new GamePanelPlayField(1000, 1000);
         gamePanelButtonBar = new GamePanelButtonBar(this);
-
-
     }
 
     private void backGroundColorAllPanels() {
@@ -159,6 +157,17 @@ public class GameMainClass implements ActionListener {
 
         while (running) {
             currentPressedKeys = GameKeyListener.getCurrentPressedKeys();
+            if (currentPressedKeys.contains(KeyEnum.KEY_ESC)) {
+                GameSprite gameSprite = GameRocketBombs.activateRocketBombReturn(gamePanelPlayField.getMainFigureX(),gamePanelPlayField.getMainFigureY());
+                if (gameSprite == null) {
+                    System.out.println("mislukt");
+                } else {
+                    System.out.println("gelukt");
+                    System.out.println("XPOS bomb = " + gameSprite.getxPos());
+                    System.out.println("Active = " + gameSprite.isActive());
+                }
+            }
+
             if (currentPressedKeys.contains(KeyEnum.KEY_ENTER)) {
                 gamePanelPlayField.positionMainFigureToInitialPosition();
             }

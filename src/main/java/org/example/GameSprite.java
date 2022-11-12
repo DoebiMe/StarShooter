@@ -9,6 +9,7 @@ public class GameSprite {
 
     private double velocity;
     private boolean active;
+
     private int indexInBufferedImages;
 
     public GameSprite(IdAndImg idAndImg, double xPos, double yPos) {
@@ -22,6 +23,10 @@ public class GameSprite {
     public void setRandomIndexInBufferedImages() {
         Random random = new Random();
         indexInBufferedImages = random.nextInt(idAndImg.getBufferedImageSizeZeroBased()   ) ;
+    }
+
+    public void setVelocity(double velocity) {
+        this.velocity = velocity;
     }
 
     public  void setRandomVelocity() {

@@ -97,11 +97,7 @@ class GamePanelPlayField extends JPanel {
         lastDrawX = drawX;
         lastDrawY = drawY;
 
-        try {
-            g.drawImage(GameImageCollection.getMainImage(),mainFigureX,mainFigureY,null);
-        } catch (Exception exception) {
-            System.out.println("Error during drawImage mainImage");
-        }
+
 
         try {
             GameAsteroids.doMovementOnAllAsteroids(this);
@@ -115,6 +111,19 @@ class GamePanelPlayField extends JPanel {
             GameUFOs.drawAllUFOs(g);
         } catch (Exception exception) {
             System.out.println("Error during drawAllUFO");
+        }
+
+        try {
+            g.drawImage(GameImageCollection.getMainImage(),mainFigureX,mainFigureY,null);
+        } catch (Exception exception) {
+            System.out.println("Error during drawImage mainImage");
+        }
+
+        try {
+            GameRocketBombs.doMovementOnAllRocketBombs(this);
+            GameRocketBombs.drawAllRocketBombs(g);
+        } catch (Exception exception) {
+            System.out.println("Error during drawRocketBombs");
         }
 
     }
