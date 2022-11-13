@@ -6,8 +6,12 @@ import java.util.ArrayList;
 
 public class GameRocketBombs {
 
+    public static final long MIN_TIME_IN_MS_BETWEEN_ROCKET_BOMB_LAUNCHES = 500;
     public static final int MAX_ROCKET_BOMBS = 50;
     private static final ArrayList<GameSprite> gameSpriteArrayList = new ArrayList<>();
+
+
+    private static long lastTimeRocketBombLaunch=0;
 
     public static void init(IdAndImg idAndImg) {
         for (int index = 0;index<MAX_ROCKET_BOMBS;index++) {
@@ -15,17 +19,24 @@ public class GameRocketBombs {
             gameSprite.setActive(false);
             gameSpriteArrayList.add(gameSprite);
         }
+        lastTimeRocketBombLaunch = System.currentTimeMillis();
     }
 
     public static GameSprite activateRocketBombReturn( double xPos, double yPos) {
-        for (GameSprite gameSprite:gameSpriteArrayList) {
-            if (!gameSprite.isActive()) {
-                gameSprite.setxPos(xPos);
-                gameSprite.setyPos(yPos);
-                gameSprite.setVelocity(7);
-                gameSprite.setActive(true);
-                return gameSprite;
+        if (lastTimeRocketBombLaunch < System.currentTimeMillis() - MIN_TIME_IN_MS_BETWEEN_ROCKET_BOMB_LAUNCHES) {
+            for (GameSprite gameSprite : gameSpriteArrayList) {
+                if (!gameSprite.isActive()) {
+                    lastTimeRocketBombLaunch = System.currentTimeMillis();
+                    gameSprite.setxPos(xPos);
+                    gameSprite.setyPos(yPos);
+                    gameSprite.setVelocity(7);
+                    gameSprite.setActive(true);
+                    return gameSprite;
+                }
             }
+        } else {
+            System.out.println("To few time between shooting");
+            System.out.println(System.currentTimeMillis());
         }
         return null;
     }

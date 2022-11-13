@@ -24,9 +24,9 @@ public class GameAsteroids {
                     gameSprite.setRandomIndexInBufferedImages();
                     gameSprite.setyPos(-Math.max(rn.nextDouble(800), gameSprite.getIdAndImg().getBufferedImage(gameSprite.getIndexInBufferedImages()).getHeight())); // hieronder rekeneing houden met de scaling
 
-                    int helperRandomHorizontalStart = gamePlayField.getWidth() -
+                    double helperRandomHorizontalStart = gamePlayField.getWidth() -
                             (gameSprite.getIdAndImg().getWidthBufferedImage(gameSprite.getIndexInBufferedImages()) / 2) + 1;
-                    int randomHorizontalPosToStart = rn.nextInt(Math.max(1, helperRandomHorizontalStart));
+                    double randomHorizontalPosToStart = rn.nextDouble(Math.max(1, helperRandomHorizontalStart));
                     gameSprite.setxPos(randomHorizontalPosToStart);
                     gameSprite.setRandomVelocity();
                 }

@@ -36,12 +36,16 @@ public class IdAndImg {
     }
 
 
-    public int getWidthBufferedImage(int index) {
+    public double getWidthBufferedImage(int index) {
         return bufferedImages[index].getWidth();
     }
 
-    public int getHeightBufferedImage(int index) {
+    public double getHeightBufferedImage(int index) {
         return bufferedImages[index].getHeight();
+    }
+
+    public double getMiddleHorizontalPointBufferedImage(int index) {
+        return bufferedImages[index].getWidth() / 2;
     }
 
 }

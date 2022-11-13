@@ -74,4 +74,10 @@ public class GameSprite {
     public int getIndexInBufferedImages() {
         return indexInBufferedImages;
     }
+    
+    public double getHalveWidth(int index) {
+        return getIdAndImg().getMiddleHorizontalPointBufferedImage(index);
+    }
+    
+
 }

@@ -6,22 +6,21 @@ import java.awt.*;
 class GamePanelPlayField extends JPanel {
 
 
-    private int mainFigureX,mainFigureY;
-    final private int initialMainFigureX,initialMainFigureY;
-    final private int mainFigureMinX,mainFigureMaxX;
-    final private int mainFigureMinY,mainFigureMaxY;
-    private int mainFigureHorizontalVelocity;
-    private int mainFigureVerticalVelocity;
+    final private double initialMainFigureX, initialMainFigureY;
     //float interpolation;
     float ballX, ballY, lastBallX, lastBallY;
-    int ballWidth, ballHeight;
+    double ballWidth, ballHeight;
     float ballXVel, ballYVel;
     float ballSpeed;
-    int lastDrawX, lastDrawY;
+    double lastDrawX, lastDrawY;
+    double width, height;
+    private double mainFigureX, mainFigureY;
+    private double mainFigureMinX, mainFigureMaxX;
+    private double mainFigureMinY, mainFigureMaxY;
+    private double mainFigureHorizontalVelocity;
+    private double mainFigureVerticalVelocity;
 
-    int width, height;
-
-    public GamePanelPlayField(int width, int height) {
+    public GamePanelPlayField(double width, double height) {
         super(true);
         ballX = lastBallX = 100;
         ballY = lastBallY = 100;
@@ -30,33 +29,40 @@ class GamePanelPlayField extends JPanel {
         ballSpeed = 25;
         ballXVel = (float) Math.random() * ballSpeed * 2 - ballSpeed;
         ballYVel = (float) Math.random() * ballSpeed * 2 - ballSpeed;
-        this.width = width;
-        this.height = height;
-        initialMainFigureX = this.width / 2 - (GameImageCollection.getMainImage().getWidth()/2) ;
-        initialMainFigureY = this.height - (GameImageCollection.getMainImage().getHeight() *2);
+        this.width = (int) width;
+        this.height = (int) height;
+        initialMainFigureX = this.width / 2 - (GameImageCollection.getMainImage().getWidth() / 2);
+        initialMainFigureY = this.height - (GameImageCollection.getMainImage().getHeight() * 2);
         positionMainFigureToInitialPosition();
-        mainFigureMinX = 10 - (GameImageCollection.getMainImage().getWidth()/2) ;
-        mainFigureMaxX = this.width - 10 - (GameImageCollection.getMainImage().getWidth()/2) ;
-        mainFigureMaxY = this.height - 50;
-        mainFigureMinY = this.height - 3 * GameImageCollection.getMainImage().getHeight();
+
         setMainFigureHorizontalVelocity(5);
         setMainFigureVerticalVelocity(5);
 
     }
 
-    public void positionMainFigureToInitialPosition(){
+    public void positionMainFigureToInitialPosition() {
         mainFigureX = initialMainFigureX;
         mainFigureY = initialMainFigureY;
     }
 
-    public void repositionMainFigureInsideAllowedZone(){
+    public void repositionMainFigureInsideAllowedZone() {
+        recalculateMainFigurePlayFieldSize();
 
-        mainFigureX = Math.max(mainFigureMinX,mainFigureX);
-        mainFigureX = Math.min(mainFigureMaxX,mainFigureX);
-        mainFigureY = Math.max(mainFigureMinY,mainFigureY);
-        mainFigureY = Math.min(mainFigureMaxY,mainFigureY);
+        mainFigureX = Math.max(mainFigureMinX, mainFigureX);
+        mainFigureX = Math.min(mainFigureMaxX, mainFigureX);
+        mainFigureY = Math.max(mainFigureMinY, mainFigureY);
+        mainFigureY = Math.min(mainFigureMaxY, mainFigureY);
 
     }
+
+    private void recalculateMainFigurePlayFieldSize() {
+
+        mainFigureMinX = 10 - (GameImageCollection.getMainImage().getWidth() / 2);
+        mainFigureMaxX = this.getParent().getWidth() - 10 - (GameImageCollection.getMainImage().getWidth() / 2);
+        mainFigureMaxY = this.getParent().getHeight() - 50;
+        mainFigureMinY = this.getParent().getHeight() - 3 * GameImageCollection.getMainImage().getHeight();
+    }
+
     public void update() {
 
         lastBallX = ballX;
@@ -67,20 +73,20 @@ class GamePanelPlayField extends JPanel {
 
         if (ballX + ballWidth / 2 >= getWidth()) {
             ballXVel *= -1;
-            ballX = getWidth() - ballWidth / 2;
+            ballX = (float) (getWidth() - ballWidth / 2);
             ballYVel = (float) Math.random() * ballSpeed * 2 - ballSpeed;
         } else if (ballX - ballWidth / 2 <= 0) {
             ballXVel *= -1;
-            ballX = ballWidth / 2;
+            ballX = (float) (ballWidth / 2);
         }
 
         if (ballY + ballHeight / 2 >= getHeight()) {
             ballYVel *= -1;
-            ballY = getHeight() - ballHeight / 2;
+            ballY = (float) (getHeight() - ballHeight / 2);
             ballXVel = (float) Math.random() * ballSpeed * 2 - ballSpeed;
         } else if (ballY - ballHeight / 2 <= 0) {
             ballYVel *= -1;
-            ballY = ballHeight / 2;
+            ballY = (float) (ballHeight / 2);
         }
     }
 
@@ -91,12 +97,11 @@ class GamePanelPlayField extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.RED);
 
-        int drawX = (int) ((ballX - lastBallX) + lastBallX - ballWidth / 2);
-        int drawY = (int) ((ballY - lastBallY) + lastBallY - ballHeight / 2);
+        double drawX =  (ballX - lastBallX) + lastBallX - ballWidth / 2;
+        double drawY =  (ballY - lastBallY) + lastBallY - ballHeight / 2;
 
         lastDrawX = drawX;
         lastDrawY = drawY;
-
 
 
         try {
@@ -107,14 +112,14 @@ class GamePanelPlayField extends JPanel {
         }
 
         try {
-            GameUFOs.doMovementOnAllUFOs((int)ballX,(int)ballY);
+            GameUFOs.doMovementOnAllUFOs((int) ballX, (int) ballY);
             GameUFOs.drawAllUFOs(g);
         } catch (Exception exception) {
             System.out.println("Error during drawAllUFO");
         }
 
         try {
-            g.drawImage(GameImageCollection.getMainImage(),mainFigureX,mainFigureY,null);
+            g.drawImage(GameImageCollection.getMainImage(), (int) mainFigureX, (int) mainFigureY, null);
         } catch (Exception exception) {
             System.out.println("Error during drawImage mainImage");
         }
@@ -130,33 +135,34 @@ class GamePanelPlayField extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(width, height);
+        return new Dimension( (int)width, (int) height);
     }
 
-    public int getMainFigureX() {
+    public double getMainFigureX() {
         return mainFigureX;
     }
 
-    public void setMainFigureX(int mainFigureX) {
+    public void setMainFigureX(double mainFigureX) {
         this.mainFigureX = mainFigureX;
     }
 
-    public int getMainFigureY() {
+    public double getMainFigureY() {
         return mainFigureY;
     }
 
-    public void setMainFigureY(int mainFigureY) {
+    public void setMainFigureY(double mainFigureY) {
         this.mainFigureY = mainFigureY;
     }
 
-    public int getMainFigureHorizontalVelocity() {
+    public double getMainFigureHorizontalVelocity() {
         return mainFigureHorizontalVelocity;
     }
 
     public void setMainFigureHorizontalVelocity(int mainFigureHorizontalVelocity) {
         this.mainFigureHorizontalVelocity = mainFigureHorizontalVelocity;
     }
-    public int getMainFigureVerticalVelocity() {
+
+    public double getMainFigureVerticalVelocity() {
         return mainFigureVerticalVelocity;
     }
 

@@ -158,7 +158,7 @@ public class GameMainClass implements ActionListener {
         while (running) {
             currentPressedKeys = GameKeyListener.getCurrentPressedKeys();
             if (currentPressedKeys.contains(KeyEnum.KEY_ESC)) {
-                GameSprite gameSprite = GameRocketBombs.activateRocketBombReturn(gamePanelPlayField.getMainFigureX(),gamePanelPlayField.getMainFigureY());
+                GameSprite gameSprite = GameRocketBombs.activateRocketBombReturn(gamePanelPlayField.getMainFigureX()+GameImageCollection.getMainImage().getWidth()/2,gamePanelPlayField.getMainFigureY());
                 if (gameSprite == null) {
                     System.out.println("mislukt");
                 } else {
