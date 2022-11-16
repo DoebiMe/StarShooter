@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16ef6bd4-0542-4076-8d78-7ceb765fd460" name="Changes" comment="Added concept RocketBomb by ESC key, need more fine tuning">
+    <list default="true" id="16ef6bd4-0542-4076-8d78-7ceb765fd460" name="Changes" comment="For having more diversion in scale and smoother X Y displacements changend all calculations to double instead of int">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameMainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameMainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GamePanelPlayField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameRocketBombs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameRocketBombs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameSprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/IdAndImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/IdAndImg.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +94,8 @@
       <workItem from="1668175289998" duration="203000" />
       <workItem from="1668181619779" duration="2375000" />
       <workItem from="1668248915029" duration="3990000" />
-      <workItem from="1668258181100" duration="3614000" />
+      <workItem from="1668258181100" duration="3903000" />
+      <workItem from="1668538798399" duration="1117000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit first loop with a airjet flyer in java swing">
       <created>1667915571342</created>
@@ -169,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668253869151</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="For having more diversion in scale and smoother X Y displacements changend all calculations to double instead of int">
+      <created>1668332282375</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1668332282375</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +202,7 @@
     <MESSAGE value="Improved with scaled images" />
     <MESSAGE value="Further improvement on scale and randomness" />
     <MESSAGE value="Added concept RocketBomb by ESC key, need more fine tuning" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added concept RocketBomb by ESC key, need more fine tuning" />
+    <MESSAGE value="For having more diversion in scale and smoother X Y displacements changend all calculations to double instead of int" />
+    <option name="LAST_COMMIT_MESSAGE" value="For having more diversion in scale and smoother X Y displacements changend all calculations to double instead of int" />
   </component>
 </project>

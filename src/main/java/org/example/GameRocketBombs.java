@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class GameRocketBombs {
 
-    public static final long MIN_TIME_IN_MS_BETWEEN_ROCKET_BOMB_LAUNCHES = 500;
+    public static final long MIN_TIME_IN_MS_BETWEEN_ROCKET_BOMB_LAUNCHES = 300;
     public static final int MAX_ROCKET_BOMBS = 50;
     private static final ArrayList<GameSprite> gameSpriteArrayList = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public class GameRocketBombs {
                     lastTimeRocketBombLaunch = System.currentTimeMillis();
                     gameSprite.setxPos(xPos);
                     gameSprite.setyPos(yPos);
-                    gameSprite.setVelocity(7);
+                    gameSprite.setVelocity(12);
                     gameSprite.setActive(true);
                     return gameSprite;
                 }
@@ -56,6 +56,10 @@ public class GameRocketBombs {
         for (GameSprite gameSprite : gameSpriteArrayList) { // hier moeten we een scaling toepassen in de index buffered image
             g.drawImage(gameSprite.getIdAndImg().getBufferedImage(gameSprite.getIndexInBufferedImages()), (int) gameSprite.getxPos(), (int) gameSprite.getyPos(), null);
         }
+    }
+
+    public static double getHalveWidthRocketBomb0() {
+        return gameSpriteArrayList.get(0).getHalveWidth(0);
     }
 
 }
